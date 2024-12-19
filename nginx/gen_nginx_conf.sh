@@ -9,10 +9,10 @@ fi
 # 接收域名参数
 DOMAIN=$1
 WWW_DOMAIN="www.$DOMAIN"
-CONF_FILE="/etc/nginx/conf.d/$WWW_DOMAIN.conf"
+CONF_FILE="/etc/nginx/conf.d/$DOMAIN.conf"
 
 # html文件路径
-mkdir /usr/share/nginx/html_$WWW_DOMAIN
+mkdir /usr/share/nginx/html_$DOMAIN
 
 # 检查是否已经存在同名配置文件
 if [ -f "$CONF_FILE" ]; then
