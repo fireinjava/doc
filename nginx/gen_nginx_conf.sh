@@ -6,6 +6,8 @@ if [ -z "$1" ]; then
   exit 1
 fi
 
+mkdir /usr/share/nginx/html_$DOMAIN
+
 # 接收域名参数
 DOMAIN=$1
 WWW_DOMAIN="www.$DOMAIN"
