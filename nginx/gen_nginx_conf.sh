@@ -23,7 +23,7 @@ server {
     listen 80;
     server_name $DOMAIN $WWW_DOMAIN;
 
-    root /var/www/html;
+    root /usr/share/nginx/html_$DOMAIN;
     index index.html;
 
     location / {
