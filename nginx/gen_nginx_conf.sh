@@ -6,12 +6,12 @@ if [ -z "$1" ]; then
   exit 1
 fi
 
-mkdir /usr/share/nginx/html_$DOMAIN
-
 # 接收域名参数
 DOMAIN=$1
 WWW_DOMAIN="www.$DOMAIN"
 CONF_FILE="/etc/nginx/conf.d/$DOMAIN.conf"
+
+mkdir /usr/share/nginx/html_$WWW_DOMAIN
 
 # 检查是否已经存在同名配置文件
 if [ -f "$CONF_FILE" ]; then
