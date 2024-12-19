@@ -25,7 +25,7 @@ server {
     listen 80;
     server_name $DOMAIN $WWW_DOMAIN;
 
-    root /usr/share/nginx/html_$DOMAIN;
+    root /usr/share/nginx/html_$WWW_DOMAIN;
     index index.html;
 
     location / {
