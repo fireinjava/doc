@@ -8,10 +8,22 @@ fi
 
 # 接收域名参数
 DOMAIN=$1
-WWW_DOMAIN="www.$DOMAIN"
-CONF_FILE="/etc/nginx/conf.d/$DOMAIN.conf"
 
-# html文件路径
+# 判断是否为二级域名（即 xxx.yyy.com 形式）
+if [[ "$DOMAIN" =~ ^[a-zA-Z0-9-]+\.[a-zA-Z0-9-]+\.[a-zA-Z]+$ ]]; then
+    WWW_DOMAIN="$DOMAIN"
+    SERVER_NAME="$DOMAIN"
+else
+    WWW_DOMAIN="www.$DOMAIN"
+    SERVER_NAME="$DOMAIN www.$DOMAIN"
+fi
+
+echo "WWW_DOMAIN：$WWW_DOMAIN"
+echo "SERVER_NAME：$SERVER_NAME"
+
+
+CONF_FILE="/etc/nginx/conf.d/$WWW_DOMAIN.conf"
+
 mkdir /usr/share/nginx/html_$DOMAIN
 
 # 检查是否已经存在同名配置文件
@@ -24,7 +36,7 @@ fi
 cat <<EOL > "$CONF_FILE"
 server {
     listen 80;
-    server_name $DOMAIN $WWW_DOMAIN;
+    server_name $SERVER_NAME;
 
     root /usr/share/nginx/html_$WWW_DOMAIN;
     index index.html;
