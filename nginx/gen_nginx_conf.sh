@@ -24,7 +24,7 @@ echo "SERVER_NAME：$SERVER_NAME"
 
 CONF_FILE="/etc/nginx/conf.d/$WWW_DOMAIN.conf"
 
-mkdir /usr/share/nginx/html_$DOMAIN
+mkdir /usr/share/nginx/html_$WWW_DOMAIN
 
 # 检查是否已经存在同名配置文件
 if [ -f "$CONF_FILE" ]; then
