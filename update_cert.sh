@@ -1,4 +1,5 @@
 #!/bin/bash
+export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
 # ==================服务器及Telegram 配置 ==================
 HOST='FRONT_XXX'
