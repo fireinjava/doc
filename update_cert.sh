@@ -45,7 +45,7 @@ log "=============================================="
 # ================== nginx 配置预检查 ==================
 log "执行 nginx 配置检测: nginx -t"
 
-if ! nginx -t >>"$LOG_FILE" 2>&1; then
+if ! /usr/sbin/nginx -t >>"$LOG_FILE" 2>&1; then
   log "❌ nginx 配置检测失败，停止证书检测与续期（避免误判）"
 
   MSG=$(printf "[letsencrypt] %s %s\nnginx -t: FAILED\n\n已停止 certbot 检测与续期。\n请先修复 nginx 配置。\n\nlog: %s" \
